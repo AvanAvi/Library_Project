@@ -19,10 +19,13 @@ jobs:
         java-version: '17'
         distribution: 'adopt'
         
+    - name: Change to library-app directory
+      run: cd library-app
+      
     - name: Build with Maven
       run: mvn clean compile
-      continue-on-error: true 
+      working-directory: library-app
       
     - name: Run tests
       run: mvn test
-      if: always()  
+      working-directory: library-app
